@@ -1,0 +1,113 @@
+{
+    "type": "object",
+    "properties": {
+        "flowArn": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A request to grant entitlements on a flow.",
+            "properties": {
+                "Entitlements": {
+                    "description": "The list of entitlements that you want to grant.",
+                    "items": {
+                        "description": "The entitlements that you want to grant on a flow.",
+                        "properties": {
+                            "Description": {
+                                "description": "A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.",
+                                "type": "string"
+                            },
+                            "Encryption": {
+                                "description": "The type of encryption that will be used on the output that is associated with this entitlement.",
+                                "properties": {
+                                    "Algorithm": {
+                                        "description": "The type of algorithm that is used for the encryption (such as aes128, aes192, or aes256).",
+                                        "enum": [
+                                            "aes128",
+                                            "aes192",
+                                            "aes256"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "KeyType": {
+                                        "description": "The type of key that is used for the encryption. If no keyType is provided, the service will use the default setting (static-key).",
+                                        "enum": [
+                                            "static-key"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "RoleArn": {
+                                        "description": "The ARN of the role that you created during setup (when you set up AWS Elemental MediaConnect as a trusted entity).",
+                                        "type": "string"
+                                    },
+                                    "SecretArn": {
+                                        "description": "The ARN that was assigned to the secret that you created in AWS Secrets Manager to store the encryption key.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "SecretArn",
+                                    "Algorithm",
+                                    "RoleArn"
+                                ],
+                                "type": "object"
+                            },
+                            "Name": {
+                                "description": "The name of the entitlement. This value must be unique within the current flow.",
+                                "type": "string"
+                            },
+                            "Subscribers": {
+                                "description": "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flows using your content as the source.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "Subscribers"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "Entitlements"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

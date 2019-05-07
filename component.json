@@ -1,0 +1,329 @@
+{
+    "title": "AWS MediaConnect",
+    "description": "API for AWS Elemental MediaConnect",
+    "docsUrl": "https://docs.aws.amazon.com/mediaconnect/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/mediaconnect/2018-11-14/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://mediaconnect.amazonaws.com/",
+                    "http://mediaconnect.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "UntagResource": {
+            "main": "./lib/actions/UntagResource.js",
+            "title": "Deletes the specified tags from a resource.",
+            "description": "Deletes the specified tags from a resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UntagResource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListTagsForResource": {
+            "main": "./lib/actions/ListTagsForResource.js",
+            "title": "Lists all tags associated with the resource.",
+            "description": "Lists all tags associated with the resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListTagsForResource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TagResource": {
+            "main": "./lib/actions/TagResource.js",
+            "title": "Associates the specified tags to a resource. If the request does not mention an existing tag associated with the resource, that tag is not changed.",
+            "description": "Associates the specified tags to a resource. If the request does not mention an existing tag associated with the resource, that tag is not changed.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TagResource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListEntitlements": {
+            "main": "./lib/actions/ListEntitlements.js",
+            "title": "Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page.",
+            "description": "Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListEntitlements.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListFlows": {
+            "main": "./lib/actions/ListFlows.js",
+            "title": "Displays a list of flows that are associated with this account. This request returns a paginated result.",
+            "description": "Displays a list of flows that are associated with this account. This request returns a paginated result.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListFlows.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateFlow": {
+            "main": "./lib/actions/CreateFlow.js",
+            "title": "Creates a new flow. The request must include one source. The request optionally can include outputs (up to 20) and entitlements (up to 50).",
+            "description": "Creates a new flow. The request must include one source. The request optionally can include outputs (up to 20) and entitlements (up to 50).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateFlow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "StartFlow": {
+            "main": "./lib/actions/StartFlow.js",
+            "title": "Starts a flow.",
+            "description": "Starts a flow.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/StartFlow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "StopFlow": {
+            "main": "./lib/actions/StopFlow.js",
+            "title": "Stops a flow.",
+            "description": "Stops a flow.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/StopFlow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteFlow": {
+            "main": "./lib/actions/DeleteFlow.js",
+            "title": "Deletes a flow. Before you can delete a flow, you must stop the flow.",
+            "description": "Deletes a flow. Before you can delete a flow, you must stop the flow.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteFlow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DescribeFlow": {
+            "main": "./lib/actions/DescribeFlow.js",
+            "title": "Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.",
+            "description": "Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DescribeFlow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GrantFlowEntitlements": {
+            "main": "./lib/actions/GrantFlowEntitlements.js",
+            "title": "Grants entitlements to an existing flow.",
+            "description": "Grants entitlements to an existing flow.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GrantFlowEntitlements.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RevokeFlowEntitlement": {
+            "main": "./lib/actions/RevokeFlowEntitlement.js",
+            "title": "Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.",
+            "description": "Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RevokeFlowEntitlement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateFlowEntitlement": {
+            "main": "./lib/actions/UpdateFlowEntitlement.js",
+            "title": "You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.",
+            "description": "You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateFlowEntitlement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AddFlowOutputs": {
+            "main": "./lib/actions/AddFlowOutputs.js",
+            "title": "Adds outputs to an existing flow. You can create up to 20 outputs per flow.",
+            "description": "Adds outputs to an existing flow. You can create up to 20 outputs per flow.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AddFlowOutputs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RemoveFlowOutput": {
+            "main": "./lib/actions/RemoveFlowOutput.js",
+            "title": "Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.",
+            "description": "Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RemoveFlowOutput.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateFlowOutput": {
+            "main": "./lib/actions/UpdateFlowOutput.js",
+            "title": "Updates an existing flow output.",
+            "description": "Updates an existing flow output.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateFlowOutput.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateFlowSource": {
+            "main": "./lib/actions/UpdateFlowSource.js",
+            "title": "Updates the source of a flow.",
+            "description": "Updates the source of a flow.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateFlowSource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
